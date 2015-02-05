@@ -6,9 +6,8 @@ from random import randint
 
 
 plotters = []
-timer = None
-timer2 = None
-QtGui.QApplication([])
+app = QtGui.QApplication([])
+timer = timer2 = win = None
 
 
 class PlotImage:
@@ -58,6 +57,7 @@ def update():
 
 
 def main():
+    global win, timer, timer2
     win = pg.GraphicsWindow(title="Myo Sensor Data")
     win.resize(1000, 600)
     win.setBackground(None)
@@ -65,16 +65,17 @@ def main():
     for i in range(8):
         if i % 2 == 0:
             win.nextRow()
-        plotters.append(PlotImage(str('Sensor %s' % str(int(i)+1))))
+        plotters.append(PlotImage(str('Sensor %s' % str(int(i) + 1))))
         plotters[i].addplot(win)
 
-timer = QtCore.QTimer()
-timer.timeout.connect(update_plot_data)
-timer.start(10)
+    timer = QtCore.QTimer()
+    timer.timeout.connect(update_plot_data)
+    timer.start(10)
 
-timer2 = QtCore.QTimer()
-timer2.timeout.connect(update_draw)
-timer2.start(100)
+    timer2 = QtCore.QTimer()
+    timer2.timeout.connect(update_draw)
+    timer2.start(100)
+
 
 if __name__ == '__main__':
     if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
