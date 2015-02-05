@@ -25,7 +25,10 @@ class PlotImage:
 
     def add_data(self, datapoint):
         self._data.append(datapoint)
-        self._plotstart += 1
+        if self._plotstart < self.XAXISLENGTH:
+            self._data.pop(0)
+        else:
+            self._plotstart += 1
 
     def draw(self):
         if not self._curve:
