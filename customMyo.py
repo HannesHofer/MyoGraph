@@ -1,9 +1,11 @@
 # Copyright (C) 2014  Niklas Rosenstein
 # All rights reserved.
+import random
+
 import myo
 from myo.lowlevel import pose_t, stream_emg
 from myo.six import print_
-import random
+
 
 myo.init()
 

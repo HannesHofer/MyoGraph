@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import sys
+
 import pyqtgraph as pg
-from mymyo import MyMyo
 from pyqtgraph.Qt import QtCore, QtGui
+
+from mymyo import MyMyo
 from PyQt4.Qt import QMutex
 
 
