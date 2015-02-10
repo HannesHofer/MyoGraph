@@ -1,4 +1,5 @@
 import myo
+from myo.lowlevel import stream_emg
 
 
 class MyMyo:
@@ -17,6 +18,7 @@ class MyMyo:
         self.hub.set_locking_policy(myo.locking_policy.none)
         self.myo = self.MyoListener(self)
         self.myo.callback = callback
+        myo.set_stream_emg(stream_emg.enabled)
         self.hub.run(1000, self.myo)
 
     class MyoListener(myo.DeviceListener):
